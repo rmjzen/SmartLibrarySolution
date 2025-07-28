@@ -35,7 +35,7 @@
             <h5 class="mb-0">Barcode Generator - Borrower Information</h5>
           </div>
           <div class="card-body">
-            <form action="/generate-barcode" method="POST">
+            <form action="{{ route('barcode.generate') }}" method="POST">
               @csrf
               
               <div class="row g-3">

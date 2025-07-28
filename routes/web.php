@@ -1,12 +1,16 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\BorrowerController;
 use App\Http\Controllers\RegisterController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return Auth::check()
+        ? redirect('/dashboard')  // change this to your actual dashboard route
+        : redirect('/login');
 });
 
 // Route::middleware('guest')->group(function () {
@@ -32,3 +36,13 @@ Route::post('/logout', function () {
 Route::get('/barcode', function () {
     return view('barcodegenerator');
 })->middleware('auth')->name('barcode');
+
+Route::post('/barcode/generate', function (Request $request) {
+
+    return $request->all();
+    // Logic to generate barcode
+    return response()->json(['message' => 'Barcode generated successfully']);
+})->middleware('auth')->name('barcode.generate');
+
+
+Route::post('/generate-barcode', [BorrowerController::class, 'store'])->name('barcode.generate');
