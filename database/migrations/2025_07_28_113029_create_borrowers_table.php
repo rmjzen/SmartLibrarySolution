@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('address');
             $table->date('birthdate');
             $table->string('valid_id');
-            $table->string('barcode')->unique(); // Unique identifier for tracking
+            $table->string('barcode')->unique();
             $table->timestamps();
         });
     }

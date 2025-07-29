@@ -32,6 +32,8 @@ Route::post('/logout', function () {
     return redirect('/login')->with('success', 'You have been logged out.');
 })->name('logout');
 
+Route::get('/barcoderesult', [BorrowerController::class, 'barcodeResult'])->middleware('auth')->name('barcode.result');
+
 
 Route::get('/barcode', function () {
     return view('barcodegenerator');

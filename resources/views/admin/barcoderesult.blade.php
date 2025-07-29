@@ -35,10 +35,17 @@
             <h5>Borrower Registered Successfully</h5>
           </div>
           <div class="card-body">
+            @foreach($borrowers as $borrower)
+              <p class="text-center mb-4">
+                <strong>Borrower ID:</strong> {{ $borrower->id }}
+              </p>
             <p><strong>Name:</strong> {{ $borrower->name }}</p>
             <p><strong>School:</strong> {{ $borrower->school }}</p>
             <p><strong>Email:</strong> {{ $borrower->email }}</p>
             <p><strong>Barcode Code:</strong> {{ $borrower->barcode }}</p>
+
+            
+            @endforeach
 
             <div class="text-center my-4">
               <h6>Generated Barcode</h6>
